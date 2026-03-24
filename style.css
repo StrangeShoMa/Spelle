@@ -1,0 +1,103 @@
+body {
+    background-color: rgb(247, 247, 247);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    
+}
+
+.menu {
+    flex: 20%;
+    /* background-color: #333; */
+}
+
+.center {
+    flex: 80%;
+}
+
+.oferta {
+    border: 2px solid #b8b8b8;
+    background-color: white;
+    border-radius: 15px; 
+    padding: 20px;       
+    margin: 20px;         
+    line-height: 1.6;
+    transition: all 0.3s ease-in-out;
+}
+
+.oferta:hover {
+  border-color: #000000;
+  background-color: #ffffff;
+  box-shadow: 0 20px 30px 30px rgba(100, 100, 100, 0.219);
+  transform: translateY(-5px);
+}
+
+.naglowek {
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.zarobki {
+    color: rgb(3, 122, 3);
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* CSS Konrad: */
+header {
+    display: flex;
+    border-radius: 30px;
+    box-shadow: 0 30px 40px 40px rgba(0,0,0,0.1);
+    margin: 1%;
+    padding: 1%;
+}
+
+footer {
+    display: flex;
+    border-radius: 30px;
+    box-shadow: 0 30px 40px 40px rgba(0,0,0,0.1);
+    margin: 1%;
+    padding: 1%;
+}
+
+
+/* Kod Huberta */
+#sorting{
+    
+    /* width: 20%; */
+    padding: 10px;
+    /* height: 30%; */
+    box-shadow: 0 30px 40px 40px rgba(0,0,0,0.1);
+    text-align: center;
+    border: 2px solid #b8b8b8;
+    background-color: white;
+    border-radius: 30px;
+
+
+}
+.sortowanietop{
+    text-align: left;
+    font-size: 17px;
+    font-weight: 900;
+}
+
+#sorting ul{
+list-style-type:none;
+
+}
+#sorting ul ul li{
+list-style-type:none;
+text-align: left;
+
+}
+    #sorting ul ul li:hover{
+background-color: white;
+transition: 1s;
+}
