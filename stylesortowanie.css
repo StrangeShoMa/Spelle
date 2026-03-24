@@ -1,0 +1,50 @@
+   .oferta {
+            border: 2px solid #333; 
+            padding: 20px;       
+            margin: 10px;         
+            background-color: #f4f4f4; 
+        }
+
+        .naglowek {
+            font-size: large;
+            font-weight: bold;
+        }
+
+        .zarobki {
+            color: lime;
+        }
+       
+        #sorting{
+           
+            width: 20%;
+            padding: 10px;
+            height: 30%;
+           box-shadow: 0 30px 40px 40px rgba(0,0,0,0.1);
+           text-align: center;
+         background-color: antiquewhite;
+          border-radius: 30px;
+
+        
+        }
+        .sortowanietop{
+            text-align: left;
+            font-size: 17px;
+            font-weight: 900;
+        }
+       
+       #sorting ul{
+        list-style-type:none;
+        
+       }
+        #sorting ul ul li{
+        list-style-type:none;
+        text-align: left;
+        background-color: #ffe4e4;
+       }
+         #sorting ul ul li:hover{
+        background-color: white;
+        transition: 1s;
+       }
+       
+       
+    
