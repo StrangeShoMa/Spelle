@@ -245,7 +245,6 @@ function WidokSzczegolow(idOferty) {
 function WidokListy() {
     const main = document.createElement("main");
     
-    // Dodajemy Twoje oryginalne menu
     const [checkboxOpen, labelHamburger, menuDiv] = Menu();
     main.appendChild(checkboxOpen);
     main.appendChild(labelHamburger);
