@@ -1,11 +1,22 @@
+// let ofertyLista = [
+//     {id: 1, naglowek: ".NET Developer", zarobki: "Dardzo dużo :)", lokalizacja: "Białystok", opis: "Szukamy kogoś do pracy w IT"},
+//     {id: 2, naglowek: "Spawacz", zarobki: "sporo", lokalizacja: "Białystok", opis: "Doświadczony spawacz"},
+//     {id: 3, naglowek: "Artysta", zarobki: "2000zł", lokalizacja: "Białystok", opis: "Szukamy kogoś kto potrafi malować"}
+// ];
+
 let ofertyLista = [];
+
 
 async function PobierzOferty() {
     const CZAS_WAZNOSCI = 24 * 60 * 60 * 1000;
     const czasTeraz = new Date().getTime();
 
+    //Ręczne ominięcie bufora:
+    //W konsoli:   localStorage.clear();
+
     const zapisanyCzas = localStorage.getItem('czasPobraniaOfert');
     const zapisaneOferty = localStorage.getItem('cacheOferty');
+
 
     if (zapisaneOferty && zapisanyCzas && (czasTeraz - zapisanyCzas < CZAS_WAZNOSCI)) {
         console.log("Dane z pamięci przeglądarki");
@@ -87,6 +98,7 @@ function StworzElement(tag, klasa, tekst) {
     }
     return el;
 }
+
 function Header() {
     const header = document.createElement("header");
 
@@ -115,6 +127,7 @@ function Header() {
 
     return header;
 }
+
 function Filtry() {
     const ul = document.createElement("ul");
 
@@ -141,6 +154,7 @@ function Filtry() {
     });
     return ul;
 }
+
 function Menu() {
     const checkboxOpen = document.createElement("input");
     checkboxOpen.type = "checkbox";
@@ -175,6 +189,7 @@ function Menu() {
 
     return [checkboxOpen, labelHamburger, menuDiv];
 }
+
 function StworzOferte(oferta) {
     const div = StworzElement("div", "oferta");
     div.style.cursor = "pointer";
@@ -197,6 +212,7 @@ function WidokSzczegolow(idOferty) {
     center.style.padding = "20px";
     center.style.backgroundColor = "#fff";
     center.style.borderRadius = "8px";
+
     
     const oferta = ofertyLista.find(o => o.id == idOferty);
 
@@ -229,6 +245,7 @@ function WidokSzczegolow(idOferty) {
 function WidokListy() {
     const main = document.createElement("main");
     
+    // Dodajemy Twoje oryginalne menu
     const [checkboxOpen, labelHamburger, menuDiv] = Menu();
     main.appendChild(checkboxOpen);
     main.appendChild(labelHamburger);
@@ -248,6 +265,8 @@ function WidokListy() {
     main.appendChild(center);
     return main;
 }
+
+
 function Footer() {
     const footer = document.createElement("footer");
     const div = document.createElement("div");
@@ -270,6 +289,7 @@ function Footer() {
     footer.append(div);
     return footer;
 }
+
 function ZbudujStrone() {
     document.body.innerHTML = ''; 
     document.body.appendChild(Header());
@@ -286,6 +306,8 @@ function ZbudujStrone() {
 
     document.body.appendChild(Footer());
 }
+
 window.addEventListener("hashchange", ZbudujStrone);
 
 PobierzOferty();
+
