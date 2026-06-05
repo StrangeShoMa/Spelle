@@ -1,7 +1,7 @@
 import { Header } from "./components/header.js";
 import { Footer } from "./components/footer.js";
 import { WidokListy } from "./components/widokLista.js";
-import { WidokSzczegolow } from "./components/widokSzczegoly.js";
+import { WidokSzczegolow } from "./components/widokSzczegolow.js";
 import { PobierzOferty } from "./api/oferty.js";
 
 export function ZbudujStrone() {
@@ -23,3 +23,4 @@ export function ZbudujStrone() {
 window.addEventListener("hashchange", ZbudujStrone);
 
 PobierzOferty();
+ZbudujStrone();

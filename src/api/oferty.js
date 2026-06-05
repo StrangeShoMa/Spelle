@@ -51,5 +51,6 @@ export async function PobierzOferty() {
 
     } catch (blad) {
         console.error("Błąd pobierania ofert:", blad);
+        ZbudujStrone();
     }
 }
