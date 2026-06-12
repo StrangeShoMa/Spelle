@@ -6,12 +6,10 @@ main {
     display: flex;
     justify-content: center;
     width: 90%;
-    
 }
 
 .menu {
     flex: 20%;
-    /* background-color: #333; */
 }
 
 .center {
@@ -42,6 +40,154 @@ main {
 
 .zarobki {
     color: rgb(3, 122, 3);
+}
+
+.lista-pasek {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 20px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.przycisk-dodaj-oferte {
+    display: inline-block;
+    margin-left: 20px;
+    padding: 10px 22px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.przycisk-dodaj-oferte:hover {
+    transform: translateY(-2px);
+}
+
+.formularz-karta {
+    background-color: white;
+    border: 2px solid #b8b8b8;
+    border-radius: 15px;
+    padding: 36px 40px;
+    margin: 24px auto;
+    max-width: 640px;
+}
+
+.formularz-tytul {
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 28px;
+}
+ 
+.formularz-pole {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+ 
+.formularz-label {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #222;
+}
+ 
+.formularz-input {
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 2px solid #b8b8b8;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+    background-color: #fafafa;
+}
+.formularz-input:focus {
+    border-color: #000;
+    background-color: #fff;
+}
+ 
+.formularz-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+ 
+.formularz-blad {
+    color: #c0392b;
+    font-size: 13px;
+    margin-top: 4px;
+    min-height: 16px;
+}
+
+.formularz-przyciski {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+.przycisk-dodaj {
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.przycisk-dodaj:hover {
+    transform: translateY(-2px);
+}
+
+.przycisk-wroc {
+    display: inline-block;
+    margin-left: 20px;
+    padding: 10px 22px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.przycisk-wroc:hover {
+    transform: translateY(-2px);
+}
+
+.oferta-lokalna {
+    border-color: #000000;
+    border-width: 2px;
+    position: relative;
+}
+
+.blad-api {
+    background: #fff3f3;
+    border: 2px solid #e74c3c;
+    border-radius: 10px;
+    padding: 12px 18px;
+    color: #c0392b;
+    font-weight: 600;
+    margin: 10px 20px;
+}
+ 
+@media (max-width: 768px) {
+    .formularz-karta {
+        padding: 24px 18px;
+        margin: 16px 0;
+    }
+    .formularz-przyciski {
+        flex-direction: column;
+    }
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 footer {

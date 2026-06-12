@@ -13,11 +13,23 @@ export function WidokListy() {
 
     const center = StworzElement("div", "center");
 
+    const pasek = StworzElement("div", "lista-pasek");
+
     const licznik = StworzElement("h3", null, `Znaleziono ofert: ${ofertyLista.length}`);
     center.appendChild(licznik);
 
+    const przyciskDodaj = StworzElement("a", "przycisk-dodaj-oferte", " + Dodaj ofertę");
+    przyciskDodaj.href = "#dodaj";
+    pasek.appendChild(licznik);
+    pasek.appendChild(przyciskDodaj);
+    center.appendChild(pasek);
+
+    center.appendChild(przyciskDodaj);
+
     ofertyLista.forEach(oferta => {
-        center.appendChild(StworzOferte(oferta));
+        const el = StworzOferte(oferta);
+        if (oferta.lokalna) el.classList.add("oferta-lokalna");
+        center.appendChild(el);
     });
 
     main.appendChild(center);

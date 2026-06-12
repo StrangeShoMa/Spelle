@@ -3,6 +3,7 @@ import { Footer } from "./components/footer.js";
 import { WidokListy } from "./components/widokLista.js";
 import { WidokSzczegolow } from "./components/widokSzczegolow.js";
 import { PobierzOferty } from "./api/oferty.js";
+import { WidokFormularza } from "./components/widokFormularz.js";
 
 export function ZbudujStrone() {
     document.body.innerHTML = "";
@@ -13,6 +14,8 @@ export function ZbudujStrone() {
     if (hash.startsWith("#oferta/")) {
         const id = hash.split("/")[1];
         document.body.appendChild(WidokSzczegolow(id));
+    } else if (hash === "#dodaj") {
+        document.body.appendChild(WidokFormularza());
     } else {
         document.body.appendChild(WidokListy());
     }
@@ -23,4 +26,3 @@ export function ZbudujStrone() {
 window.addEventListener("hashchange", ZbudujStrone);
 
 PobierzOferty();
-ZbudujStrone();
