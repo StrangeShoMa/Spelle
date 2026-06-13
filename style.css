@@ -50,6 +50,80 @@ main {
     flex-wrap: wrap;
     gap: 10px;
 }
+.szczegoly-kontener {
+    max-width: 80%;
+    margin: 40px auto; 
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); 
+}
+
+
+.szczegoly-naglowek {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.szczegoly-firma {
+    font-size: 20px;
+    color: #7f8c8d;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+
+.szczegoly-pasek-info {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.szczegoly-tag {
+    background-color: #f0f7ff;
+    color: #0056b3;
+    padding: 8px 16px;
+    border-radius: 30px; 
+    font-weight: 600;
+    font-size: 15px;
+    display: inline-block;
+}
+
+
+.szczegoly-opis {
+    line-height: 1.7; 
+    color: #34495e;
+    font-size: 16px;
+}
+
+.szczegoly-opis ul, 
+.szczegoly-opis li {
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+.szczegoly-wroc{
+    display: inline-block;
+    margin-left: 20px;
+    padding: 10px 22px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+}
+.input-wyszukiwarka{
+    padding:5px;
+    margin-right: 15px;
+}
+.szczegoly-wroc:hover {
+    transform: translateY(-2px);
+}
 
 .przycisk-dodaj-oferte {
     display: inline-block;
