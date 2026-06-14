@@ -21,9 +21,16 @@ export function WidokSzczegolow(idOferty) {
         center.appendChild(opis);
     }
 
-    const btn = StworzElement("button", "szczegoly-wroc", "Powrót");
-    btn.addEventListener("click", () => window.location.hash = "");
-    center.appendChild(btn);
+    if (oferta.link) {
+        const link = StworzElement("a", "szczegoly-wroc", "Link do orginalnej oferty");
+        link.href = oferta.link;
+        link.target = "_blank";
+        center.appendChild(link);
+    }
+
+    const btnPowrot = StworzElement("button", "szczegoly-wroc", "Powrót");
+    btnPowrot.addEventListener("click", () => window.location.hash = "");
+    center.appendChild(btnPowrot);
 
     main.appendChild(center);
     return main;

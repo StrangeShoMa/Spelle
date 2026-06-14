@@ -27,10 +27,10 @@ main {
 }
 
 .oferta:hover {
-  border-color: #000000;
-  background-color: #ffffff;
-  box-shadow: 0 20px 30px 30px rgba(100, 100, 100, 0.219);
-  transform: translateY(-5px);
+    border-color: #000000;
+    background-color: #ffffff;
+    box-shadow: 0 20px 30px 30px rgba(100, 100, 100, 0.219);
+    transform: translateY(-5px);
 }
 
 .naglowek {
