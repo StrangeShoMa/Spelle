@@ -1,8 +1,9 @@
+
 import { Menu } from "./menu.js";
 import { StworzOferte } from "./oferta.js";
 import { StworzElement } from "../utils/dom.js";
 import { ofertyLista } from "../api/oferty.js";
-
+//Generuje główny widok aplikacji zawierający interaktywną wyszukiwarkę, opcje sortowania oraz przefiltrowaną listę ofert pracy.
 export function WidokListy() {
     const main = document.createElement("main");
 

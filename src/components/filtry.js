@@ -1,6 +1,6 @@
 import { sortowaniePoCzym } from "../utils/dane.js";
 import { StworzElement } from "../utils/dom.js";
-
+//Generuje i zwraca interaktywną strukturę list z checkboxami, służącą do filtrowania ofert na podstawie predefiniowanych kategorii.
 export function Filtry() {
     const ul = document.createElement("ul");
 

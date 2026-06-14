@@ -1,5 +1,5 @@
 import { StworzElement } from "../utils/dom.js";
-
+//Buduje klikalną kartę pojedynczej oferty pracy, która po wybraniu przekierowuje użytkownika do widoku jej szczegółów.
 export function StworzOferte(oferta) {
     const div = StworzElement("div", "oferta");
     div.style.cursor = "pointer";

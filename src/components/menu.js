@@ -1,6 +1,6 @@
 import { Filtry } from "./filtry.js";
 import { StworzElement } from "../utils/dom.js";
-
+//Buduje zestaw elementów bocznego panelu sortowania wraz z obsługą rozwijania i zwijania menu hamburgerowego.
 export function Menu() {
     const checkboxOpen = document.createElement("input");
     checkboxOpen.type = "checkbox";

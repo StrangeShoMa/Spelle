@@ -1,5 +1,5 @@
 import { StworzElement } from "../utils/dom.js";
-
+//Generuje komponent nagłówka strony zawierający główne logo-tytuł portalu oraz listę odnośników nawigacyjnych.
 export function Header() {
     const header = document.createElement("header");
 

@@ -1,9 +1,10 @@
+
 import { ZbudujStrone } from "../main.js";
 
 export let ofertyLista = [];
 
 const KLUCZ_LOKALNE = "ofertyLokalne";
-
+//Pobiera listę ofert pracy z API Jooble lub lokalnego bufora i inicjuje budowę głównego widoku strony.
 function PobierzOfertyLokalne() {
     try {
         return JSON.parse(localStorage.getItem(KLUCZ_LOKALNE)) || [];

@@ -1,5 +1,5 @@
 import { StworzElement } from "../utils/dom.js";
-
+//Tworzy komponent stopki strony zawierający sekcję informacyjną oraz dodatkowe linki pomocnicze.
 export function Footer() {
     const footer = document.createElement("footer");
     const div = document.createElement("div");

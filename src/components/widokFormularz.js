@@ -1,6 +1,6 @@
 import { StworzElement } from "../utils/dom.js";
 import { DodajOferteLokalnie } from "../api/oferty.js";
-
+//Tworzy i obsługuje formularz umożliwiający użytkownikowi dodanie nowej oferty pracy do lokalnej tablicy.
 export function WidokFormularza() {
     const main = document.createElement("main");
     const center = StworzElement("div", "center");
@@ -64,6 +64,7 @@ export function WidokFormularza() {
     main.appendChild(center);
     return main;
 }
+//Waliduje dane wprowadzone w formularzu i w przypadku ich poprawności zapisuje nową ofertę lokalnie.
 function zapiszOferte() {
     document.querySelectorAll(".formularz-blad").forEach(el => el.textContent = "");
 

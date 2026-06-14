@@ -1,6 +1,6 @@
 import { StworzElement } from "../utils/dom.js";
 import { ofertyLista } from "../api/oferty.js";
-
+//Zwraca kontener z pełnymi szczegółami konkretnego ogłoszenia o pracę na podstawie przekazanego identyfikatora.
 export function WidokSzczegolow(idOferty) {
     const main = document.createElement("main");
     const center = StworzElement("div", "center szczegoly-kontener");
