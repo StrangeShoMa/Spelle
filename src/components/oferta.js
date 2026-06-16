@@ -1,14 +1,21 @@
 import { StworzElement } from "../utils/dom.js";
-//Buduje klikalną kartę pojedynczej oferty pracy, która po wybraniu przekierowuje użytkownika do widoku jej szczegółów.
+
 export function StworzOferte(oferta) {
     const div = StworzElement("div", "oferta");
     div.style.cursor = "pointer";
 
     div.appendChild(StworzElement("div", "naglowek", oferta.naglowek));
     div.appendChild(StworzElement("div", "firma", oferta.firma));
-    div.appendChild(StworzElement("div", "zarobki", oferta.zarobki));
-    div.appendChild(StworzElement("div", "lokalizacja", oferta.lokalizacja));
-    div.appendChild(StworzElement("div", "opis", oferta.opis));
+    
+    
+    const badgeContainer = StworzElement("div", "badge-container");
+    badgeContainer.appendChild(StworzElement("div", "badge-zarobki", oferta.zarobki));
+    badgeContainer.appendChild(StworzElement("div", "badge-lokalizacja", oferta.lokalizacja));
+    div.appendChild(badgeContainer);
+
+    const wymiarEtatu = oferta.etat ? oferta.etat : "Pełny etat";
+    const etatBox = StworzElement("div", "etat-info", `Wymiar etatu: ${wymiarEtatu}`);
+    div.appendChild(etatBox);
 
     div.addEventListener("click", () => {
         window.location.hash = `#oferta/${oferta.id}`;

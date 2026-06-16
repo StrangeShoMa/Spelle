@@ -1,0 +1,292 @@
+:root {
+    --primary-color: #000000;
+    --text-color: #333333;
+    --text-muted: #7f8c8d;
+    --bg-global: rgb(247, 247, 247);
+    --bg-card: #ffffff;
+    --border-color: #b8b8b8;
+    
+    --green-bg: #e6f4ea;
+    --green-text: #137333;
+    
+    --blue-bg: #f0f7ff;
+    --blue-text: #0056b3;
+    
+    --radius-standard: 10px;
+    --radius-large: 15px;
+    --transition-smooth: all 0.3s ease-in-out;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-global);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 0;
+}
+
+footer {
+    width: 100%;
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    padding: 30px 0;
+    margin-top: auto;
+}
+
+.header-inner,
+.footer-inner,
+main {
+    width: 60%;
+    margin: 0 auto;
+}
+
+main {
+    display: flex;
+    gap: 30px;
+    padding: 40px 0;
+    flex-grow: 1;
+}
+
+.menu { flex: 0 0 25%; }
+.center { flex: 0 0 75%; }
+
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.header-left { display: flex; flex-direction: column; gap: 4px; }
+.header-logo-link { display: inline-block; }
+.header-logo { height: 40px; display: block; }
+.header-subtext { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+.header-right .header-link { text-decoration: none; color: var(--primary-color); font-weight: 600; font-size: 15px; transition: var(--transition-smooth); }
+.header-right .header-link:hover { color: var(--blue-text); }
+
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-start; }
+.footer-links { display: flex; flex-direction: column; gap: 8px; }
+.footer-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 500; transition: var(--transition-smooth); }
+.footer-links a:hover { color: var(--primary-color); }
+.footer-info { text-align: right; font-size: 13px; color: var(--text-muted); }
+.footer-authors { font-weight: 700; color: var(--primary-color); margin-bottom: 4px; }
+
+/* Struktura Karty Oferty Pracy */
+.oferta {
+    background-color: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-large);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: var(--transition-smooth);
+}
+.oferta:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 30px 30px rgba(100, 100, 100, 0.05);
+    transform: translateY(-5px);
+}
+.oferta .naglowek { font-size: 24px; font-weight: bolder; margin-bottom: 4px; }
+.oferta .firma { font-size: 16px; color: var(--text-muted); margin-bottom: 12px; font-weight: 500; }
+
+.badge-container { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+.badge-zarobki { background-color: var(--green-bg); color: var(--green-text); padding: 6px 14px; border-radius: 4px; font-weight: 700; font-size: 14px; }
+.badge-lokalizacja { background-color: var(--blue-bg); color: var(--blue-text); padding: 6px 14px; border-radius: 4px; font-weight: 600; font-size: 14px; }
+
+.etat-info {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--text-color);
+    font-weight: 500;
+    border-top: 1px solid var(--border-color);
+    padding-top: 14px;
+}
+
+/* Moduł Menu i Sortowania */
+#sorting { background-color: var(--bg-card); border: 2px solid var(--border-color); border-radius: var(--radius-large); padding: 20px; }
+.sortowanietop { font-weight: 900; margin-top: 10px; font-size: 17px; }
+#sorting ul { list-style-type: none; }
+#sorting ul ul li { text-align: left; margin-bottom: 4px; }
+
+.select-sortowanie {
+    width: 100%;
+    padding: 8px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-standard);
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    outline: none;
+    background-color: var(--bg-card);
+    font-family: inherit;
+}
+.select-sortowanie:focus { border-color: var(--primary-color); }
+
+/* NOWY UKŁAD POLA WYSZUKIWANIA */
+.wyszukiwarka-blok {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 24px;
+}
+.input-stanowisko { flex: 0 0 55%; }
+.input-lokalizacja { flex: 0 0 30%; }
+
+/* Style identyczne z polami formularza */
+.input-wyszukiwarka {
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-standard);
+    outline: none;
+    transition: border-color 0.2s ease;
+    background-color: #fafafa;
+    font-family: inherit;
+}
+.input-wyszukiwarka:focus { 
+    border-color: #000; 
+    background-color: #fff; 
+}
+
+/* Przycisk Szukaj sformatowany tak samo jak +Dodaj ofertę */
+.przycisk-szukaj {
+    flex: 1;
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-smooth);
+}
+.przycisk-szukaj:hover { 
+    transform: translateY(-2px); 
+}
+
+/* Nowy Układ Paska Informacyjnego i Ofert */
+.lista-pasek {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.lista-ofert-kontener {
+    margin-top: 20px;
+}
+
+/* Stylizacja Przycisków Ogólnych */
+.przycisk-dodaj-oferte, .szczegoly-wroc, .przycisk-dodaj, .przycisk-wroc {
+    display: inline-block;
+    padding: 10px 22px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-smooth);
+}
+.przycisk-dodaj-oferte:hover, .szczegoly-wroc:hover, .przycisk-dodaj:hover, .przycisk-wroc:hover {
+    transform: translateY(-2px);
+}
+.przycisk-wroc { margin-left: 15px; }
+
+/* ARCHITEKTURA OKNA SZCZEGÓŁÓW (Wymuszenie dołu bloku) */
+.szczegoly-kontener {
+    background-color: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-large);
+    padding: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px; /* Gwarancja dłuższego bloku kartowego */
+}
+.szczegoly-naglowek { font-size: 32px; color: var(--primary-color); margin-bottom: 5px; font-weight: 700; }
+.szczegoly-firma { font-size: 20px; color: var(--text-muted); font-weight: 500; margin-bottom: 25px; }
+.szczegoly-opis { fill: var(--text-color); line-height: 1.7; color: #34495e; font-size: 16px; margin-top: 15px; }
+.szczegoly-opis ul, .szczegoly-opis li { margin-top: 10px; margin-bottom: 10px; margin-left: 20px; }
+
+.szczegoly-przyciski-box {
+    margin-top: auto; /* Kluczowe inżynierskie pchnięcie na sam dół */
+    padding-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Moduł Formularza */
+.formularz-karta { background-color: var(--bg-card); border: 2px solid var(--border-color); border-radius: var(--radius-large); padding: 36px 40px; margin: 0 auto; max-width: 640px; }
+.formularz-tytul { font-size: 26px; font-weight: 900; margin-bottom: 28px; }
+.formularz-pole { display: flex; flex-direction: column; margin-bottom: 18px; }
+.formularz-label { font-weight: 700; font-size: 14px; margin-bottom: 6px; color: #222; }
+.formularz-input { padding: 10px 14px; font-size: 15px; border: 2px solid var(--border-color); border-radius: var(--radius-standard); outline: none; transition: border-color 0.2s ease; background-color: #fafafa; font-family: inherit; }
+.formularz-input:focus { border-color: #000; background-color: #fff; }
+.formularz-textarea { resize: vertical; min-height: 100px; }
+.formularz-blad { color: #c0392b; font-size: 13px; margin-top: 4px; min-height: 16px; }
+.formularz-przycisk { margin-top: 20px; }
+
+#menu-open, #menu-close { display: none; }
+#hamburger-menu, #close-menu { display: none; }
+
+/* RWD i Zachowanie Mobilne */
+@media (max-width: 1024px) {
+    .header-inner, .footer-inner, main { width: 90%; }
+}
+
+@media (max-width: 768px) {
+    main { flex-direction: column; }
+    .menu, .center { width: 100%; }
+    .header-inner, .footer-inner { flex-direction: column; gap: 15px; text-align: center; }
+    .footer-info { text-align: center; }
+    
+    .badge-container { flex-direction: column; align-items: flex-start; }
+    
+    /* Reorganizacja wyszukiwania na telefonie */
+    .wyszukiwarka-blok { flex-direction: column; gap: 10px; }
+    .input-stanowisko, .input-lokalizacja { flex: 1 1 auto; width: 100%; }
+    .przycisk-szukaj { padding: 12px; }
+    
+    #hamburger-menu {
+        display: block;
+        background-color: var(--bg-card);
+        border-radius: var(--radius-standard);
+        border: 2px solid var(--border-color);
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    #sorting { display: none; }
+    #menu-open:checked ~ .menu #sorting { display: block; }
+    #menu-open:checked ~ .menu #close-menu {
+        display: block;
+        background-color: var(--bg-global);
+        border-radius: var(--radius-standard);
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    #menu-open:checked + #hamburger-menu { display: none; }
+}

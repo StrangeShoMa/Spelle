@@ -1,6 +1,6 @@
 import { StworzElement } from "../utils/dom.js";
 import { DodajOferteLokalnie } from "../api/oferty.js";
-//Tworzy i obsługuje formularz umożliwiający użytkownikowi dodanie nowej oferty pracy do lokalnej tablicy.
+
 export function WidokFormularza() {
     const main = document.createElement("main");
     const center = StworzElement("div", "center");
@@ -11,28 +11,42 @@ export function WidokFormularza() {
     karta.appendChild(h2);
 
     const pola = [
-        { id: "f-naglowek",     label: "Nazwa stanowiska*", type: "text",       placeholder: "Np. Kierownik" },
-        { id: "f-firma",        label: "Nazwa firmy*",      type: "text",       placeholder: "Np. Januszex SP. z o.o." },
-        { id: "f-lokalizacja",  label: "Lokalizacja*",      type: "text",       placeholder: "Np. Białystok"},
-        { id: "f-zarobki",      label: "Zarobki",           type: "text",       placeholder: "Np. 5000-10000zł" },
-        { id: "f-opis",         label: "Opis oferty",       type: "textarea",   placeholder: "Np. Zakres obowiązków, wymagania na stanowisko"}
+        { id: "f-naglowek",     label: "Nazwa stanowiska*", type: "text",       placeholder:    "Np. Kierownik" },
+        { id: "f-firma",        label: "Nazwa firmy*",      type: "text",       placeholder:    "Np. Januszex SP. z o.o." },
+        { id: "f-lokalizacja",  label: "Lokalizacja*",      type: "text",       placeholder:    "Np. Białystok"},
+        { id: "f-zarobki",      label: "Zarobki",           type: "text",       placeholder:    "Np. 5000-10000zł" },
+        { id: "f-etat",         label: "Wymiar etatu",      type: "select",     opcje:          ["Pełny etat", "Niepełny etat", "Praca Tymczasowa"] },
+        { id: "f-opis",         label: "Opis oferty",       type: "textarea",   placeholder:    "Np. Zakres obowiązków, wymagania na stanowisko"}
     ];
 
-    pola.forEach(({ id, label, type, placeholder }) => {
+    pola.forEach(({ id, label, type, placeholder, opcje }) => {
         const pole = StworzElement("div", "formularz-pole");
         const lbl = StworzElement("label", "formularz-label", label);
         lbl.htmlFor = id;
         pole.appendChild(lbl);
 
         let input;
-        if(type === "textarea") {
+       if (type === "textarea") {
             input = document.createElement("textarea");
             input.className = "formularz-input formularz-textarea";
             input.rows = 4;
+            input.placeholder = placeholder;
+        } else if (type === "select") {
+            input = document.createElement("select");
+            input.className = "formularz-input";
+            
+            
+            opcje.forEach(opcjaTekst => {
+                const opt = document.createElement("option");
+                opt.value = opcjaTekst;
+                opt.textContent = opcjaTekst;
+                input.appendChild(opt);
+            });
         } else {
             input = document.createElement("input");
-            input.type = type
+            input.type = type;
             input.className = "formularz-input";
+            input.placeholder = placeholder;
         }
 
         input.id = id;
@@ -64,7 +78,7 @@ export function WidokFormularza() {
     main.appendChild(center);
     return main;
 }
-//Waliduje dane wprowadzone w formularzu i w przypadku ich poprawności zapisuje nową ofertę lokalnie.
+
 function zapiszOferte() {
     document.querySelectorAll(".formularz-blad").forEach(el => el.textContent = "");
 
@@ -72,6 +86,7 @@ function zapiszOferte() {
     const firma       = document.getElementById("f-firma").value.trim();
     const lokalizacja = document.getElementById("f-lokalizacja").value.trim();
     const zarobki     = document.getElementById("f-zarobki").value.trim();
+    const etat        = document.getElementById("f-etat").value;
     const opis        = document.getElementById("f-opis").value.trim();
 
     const PolaWymagane = ["naglowek", "firma", "lokalizacja"];
@@ -93,6 +108,7 @@ function zapiszOferte() {
         firma,
         lokalizacja,
         zarobki:    zarobki || "Nie podano wynagrodzenia",
+        etat:       etat,
         opis:       opis    || "Brak opisu",
         lokalna:    true,
     };

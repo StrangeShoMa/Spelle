@@ -1,21 +1,32 @@
 import { StworzElement } from "../utils/dom.js";
-//Tworzy komponent stopki strony zawierający sekcję informacyjną oraz dodatkowe linki pomocnicze.
+
 export function Footer() {
     const footer = document.createElement("footer");
-    const div = document.createElement("div");
+    const inner = StworzElement("div", "footer-inner");
+   
+    const linksBox = StworzElement("div", "footer-links");
+    
+    const mainLink = StworzElement("a", null, "Strona Główna");
+    mainLink.href = "index.html";
+    
+    const aboutLink = StworzElement("a", null, "Informacje o nas");
+    aboutLink.href = "#onas";
 
-    div.appendChild(StworzElement("h3", null, "Informacje:"));
+    linksBox.appendChild(mainLink);
+    linksBox.appendChild(aboutLink);
 
-    const ul = document.createElement("ul");
-    ["Pomoc", "Kontakt", "Wykonali: Spelle"].forEach(tekst => {
-        const li = document.createElement("li");
-        const a = StworzElement("a", null, tekst);
-        a.href = "#";
-        li.appendChild(a);
-        ul.appendChild(li);
-    });
+    const infoBox = StworzElement("div", "footer-info");
+    const authors = StworzElement("p", "footer-authors", "Wykonali: Spelle");
+    
+    const biezacyRok = new Date().getFullYear();
+    const copyright = StworzElement("p", "footer-copyright", `© ${biezacyRok} Wszelkie prawa zastrzeżone.`);
 
-    div.appendChild(ul);
-    footer.append(div);
+    infoBox.appendChild(authors);
+    infoBox.appendChild(copyright);
+
+    inner.appendChild(linksBox);
+    inner.appendChild(infoBox);
+    footer.appendChild(inner);
+
     return footer;
 }

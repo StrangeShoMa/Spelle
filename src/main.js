@@ -4,7 +4,8 @@ import { WidokListy } from "./components/widokLista.js";
 import { WidokSzczegolow } from "./components/widokSzczegolow.js";
 import { PobierzOferty } from "./api/oferty.js";
 import { WidokFormularza } from "./components/widokFormularz.js";
-//Zarządza dynamicznym renderowaniem odpowiedniego widoku aplikacji oraz stałych elementów struktury strony na podstawie aktualnego fragmentu adresu URL (hash).
+import { Widokonas } from "./components/widokonas.js";
+
 export function ZbudujStrone() {
     document.body.innerHTML = "";
     document.body.appendChild(Header());
@@ -16,7 +17,9 @@ export function ZbudujStrone() {
         document.body.appendChild(WidokSzczegolow(id));
     } else if (hash === "#dodaj") {
         document.body.appendChild(WidokFormularza());
-    } else {
+    } else if (hash === "#onas") {
+    document.body.appendChild(Widokonas()); 
+    }else {
         document.body.appendChild(WidokListy());
     }
 

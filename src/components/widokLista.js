@@ -1,49 +1,60 @@
-
 import { Menu } from "./menu.js";
 import { StworzOferte } from "./oferta.js";
 import { StworzElement } from "../utils/dom.js";
-import { ofertyLista } from "../api/oferty.js";
-//Generuje główny widok aplikacji zawierający interaktywną wyszukiwarkę, opcje sortowania oraz przefiltrowaną listę ofert pracy.
+import { ofertyLista, PobierzOferty, aktualneKeywords, aktualnaLokalizacja, aktualneSortowanie } from "../api/oferty.js";
+
 export function WidokListy() {
     const main = document.createElement("main");
 
-    const [checkboxOpen, labelHamburger, menuDiv] = Menu();
+    
+    const [checkboxOpen, labelHamburger, menuDiv] = Menu(() => aktualizujWidok());
     main.appendChild(checkboxOpen);
     main.appendChild(labelHamburger);
     main.appendChild(menuDiv);
 
     const center = StworzElement("div", "center");
 
-    const pasek = StworzElement("div", "lista-pasek");
     
-    const wyszukiwarka = document.createElement("input");
-    wyszukiwarka.type = "text";
-    wyszukiwarka.placeholder = "Szukaj stanowiska lub firmy...";
-    wyszukiwarka.className = "input-wyszukiwarka";
+    const wyszukiwarkaBlok = StworzElement("div", "wyszukiwarka-blok");
     
-    const sortowanieSelect = document.createElement("select");
-    sortowanieSelect.innerHTML = `
-        <option value="domyslne">Kolejność domyślna</option>
-        <option value="az">Stanowisko: A-Z</option>
-        <option value="za">Stanowisko: Z-A</option>
-    `;
-    const licznik = StworzElement("h3", null, `Znaleziono ofert: ${ofertyLista.length}`);
-    center.appendChild(licznik);
+    const inputStanowisko = document.createElement("input");
+    inputStanowisko.type = "text";
+    inputStanowisko.placeholder = "Szukaj stanowiska lub firmy...";
+    inputStanowisko.className = "input-wyszukiwarka input-stanowisko";
+    inputStanowisko.value = aktualneKeywords;
+    
+    const inputLokalizacja = document.createElement("input");
+    inputLokalizacja.type = "text";
+    inputLokalizacja.placeholder = "Miejscowość lub region...";
+    inputLokalizacja.className = "input-wyszukiwarka input-lokalizacja";
+    inputLokalizacja.value = aktualnaLokalizacja;
+    
+    const przyciskSzukaj = StworzElement("button", "przycisk-szukaj", "Szukaj");
+    przyciskSzukaj.addEventListener("click", () => {
+        const kw = inputStanowisko.value.trim();
+        const loc = inputLokalizacja.value.trim();
+        PobierzOferty(kw, loc || "Polska");
+    });
 
-    const przyciskDodaj = StworzElement("a", "przycisk-dodaj-oferte", " + Dodaj ofertę");
+    wyszukiwarkaBlok.appendChild(inputStanowisko);
+    wyszukiwarkaBlok.appendChild(inputLokalizacja);
+    wyszukiwarkaBlok.appendChild(przyciskSzukaj);
+    center.appendChild(wyszukiwarkaBlok);
+
+    const pasekInfo = StworzElement("div", "lista-pasek");
+    
+    const licznik = StworzElement("h3", "licznik-ofert", `Znaleziono ofert: ${ofertyLista.length}`);
+    const przyciskDodaj = StworzElement("a", "przycisk-dodaj-oferte", "+ Dodaj ofertę");
     przyciskDodaj.href = "#dodaj";
-    pasek.appendChild(wyszukiwarka);
-    pasek.appendChild(sortowanieSelect);
-    pasek.appendChild(licznik);
-    pasek.appendChild(przyciskDodaj);
-    center.appendChild(pasek);
 
-    center.appendChild(przyciskDodaj);
+    pasekInfo.appendChild(licznik);
+    pasekInfo.appendChild(przyciskDodaj);
+    center.appendChild(pasekInfo);
     
     const listaOfertKontener = StworzElement("div", "lista-ofert-kontener");
     center.appendChild(listaOfertKontener);
 
- function renderujOferty(daneDoWyswietlenia) {
+    function renderujOferty(daneDoWyswietlenia) {
         listaOfertKontener.innerHTML = ""; 
         licznik.textContent = `Znaleziono ofert: ${daneDoWyswietlenia.length}`;
 
@@ -54,30 +65,39 @@ export function WidokListy() {
         });
     }
 
-function aktualizujWidok() {
-        const szukanaFraza = wyszukiwarka.value.toLowerCase();
-        const trybSortowania = sortowanieSelect.value;
+    function pobierzKwote(tekstZarobkow) {
+        if (!tekstZarobkow || tekstZarobkow === "Wynagrodzenia nie podano") return 0;
+        const znalezioneCyfry = String(tekstZarobkow).match(/\d+/);
+        return znalezioneCyfry ? parseInt(znalezioneCyfry[0], 10) : 0;
+    }
 
-     
+    function aktualizujWidok() {
+        const szukanaFraza = inputStanowisko.value.toLowerCase();
+        const trybSortowania = aktualneSortowanie;
+
         let przetworzone = ofertyLista.filter(oferta => {
-            const naglowek = oferta.naglowek.toLowerCase();
+            const naglowek = (oferta.naglowek || "").toLowerCase();
             const firma = (oferta.firma || "").toLowerCase();
             return naglowek.includes(szukanaFraza) || firma.includes(szukanaFraza);
         });
 
-       
+    
         if (trybSortowania === "az") {
-            przetworzone.sort((a, b) => a.naglowek.localeCompare(b.naglowek));
+            przetworzone.sort((a, b) => (a.naglowek || "").localeCompare(b.naglowek || ""));
         } else if (trybSortowania === "za") {
-            przetworzone.sort((a, b) => b.naglowek.localeCompare(a.naglowek));
+            przetworzone.sort((a, b) => (b.naglowek || "").localeCompare(a.naglowek || ""));
+        } else if (trybSortowania === "zarobki_rosnaco") {
+            przetworzone.sort((a, b) => pobierzKwote(a.zarobki) - pobierzKwote(b.zarobki));
+        } else if (trybSortowania === "zarobki_malejaco") {
+            przetworzone.sort((a, b) => pobierzKwote(b.zarobki) - pobierzKwote(a.zarobki));
         }
 
         renderujOferty(przetworzone);
     }
-    wyszukiwarka.addEventListener("input", aktualizujWidok);
-    sortowanieSelect.addEventListener("change", aktualizujWidok);
 
+    inputStanowisko.addEventListener("input", aktualizujWidok);
 
+    
     aktualizujWidok();
 
     main.appendChild(center);
