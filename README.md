@@ -1,6 +1,6 @@
-#Portal Ofert Pracy
+# Portal Ofert Pracy
 
-##Opis projektu
+## Opis projektu
 Aplikacja internetowa służąca do przeglądania, wyszukiwania i dodawania ofert pracy. Projekt został stworzony od zera w czystym języku JavaScript (Vanilla JS) z wykorzystaniem architektury modułowej (ES6 Modules), bez użycia zewnętrznych frameworków.
 
 Głównym założeniem było dynamiczne budowanie interfejsu (manipulacja DOM) oraz komunikacja z zewnętrznym serwerem.
