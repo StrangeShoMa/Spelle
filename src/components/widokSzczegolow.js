@@ -22,7 +22,7 @@ export function WidokSzczegolow(idOferty) {
 
         const opis = document.createElement("div");
         opis.className = "szczegoly-opis";
-        opis.innerHTML = oferta.opis || "Brak dodatkowego opisu.";
+        opis.textContent = oferta.opis || "Brak dodatkowego opisu.";
         center.appendChild(opis);
     }
   
